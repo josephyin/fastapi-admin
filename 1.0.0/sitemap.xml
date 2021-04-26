@@ -3,5 +3,9 @@
      <loc>https://github.com/fastapi-admin/1.0.0/home/</loc>
      <lastmod>2021-04-26</lastmod>
      <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://github.com/fastapi-admin/1.0.0/getting_started/</loc>
+     <lastmod>2021-04-26</lastmod>
+     <changefreq>daily</changefreq>
     </url>
 </urlset>
