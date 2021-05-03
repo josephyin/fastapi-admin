@@ -522,8 +522,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#user_model" class="md-nav__link">
-    user_model
+  <a href="#admin_model" class="md-nav__link">
+    admin_model
   </a>
   
 </li>
@@ -537,6 +537,61 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#permission_provider-pro-only" class="md-nav__link">
+    permission_provider (💗 Pro only)
+  </a>
+  
+    <nav class="md-nav" aria-label="permission_provider (💗 Pro only)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#admin_model_1" class="md-nav__link">
+    admin_model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource_model" class="md-nav__link">
+    resource_model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permission_model" class="md-nav__link">
+    permission_model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#role_model" class="md-nav__link">
+    role_model
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log_model" class="md-nav__link">
+    log_model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#search_provider-pro-only" class="md-nav__link">
+    search_provider  (💗 Pro only)
+  </a>
   
 </li>
       
@@ -964,8 +1019,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#user_model" class="md-nav__link">
-    user_model
+  <a href="#admin_model" class="md-nav__link">
+    admin_model
   </a>
   
 </li>
@@ -979,6 +1034,61 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#permission_provider-pro-only" class="md-nav__link">
+    permission_provider (💗 Pro only)
+  </a>
+  
+    <nav class="md-nav" aria-label="permission_provider (💗 Pro only)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#admin_model_1" class="md-nav__link">
+    admin_model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource_model" class="md-nav__link">
+    resource_model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permission_model" class="md-nav__link">
+    permission_model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#role_model" class="md-nav__link">
+    role_model
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log_model" class="md-nav__link">
+    log_model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#search_provider-pro-only" class="md-nav__link">
+    search_provider  (💗 Pro only)
+  </a>
   
 </li>
       
@@ -1016,11 +1126,28 @@
 <h2 id="template_folders">template_folders</h2>
 <p>Template folders used to override builtin templates.</p>
 <h2 id="login_provider">login_provider</h2>
-<p>You can pass subclasses of <code>fastapi_admin.providers.login.LoginProvider</code>, there is a builtin <code>fastapi_admin.providers.login.UsernamePasswordProvider</code> you can use.</p>
-<h3 id="user_model">user_model</h3>
-<p>Subclass instance of <code>fastapi_admin.providers.login.UserMixin</code>.</p>
+<p>You can pass subclasses of <code>fastapi_admin.providers.login.LoginProvider</code>, there is a
+builtin <code>fastapi_admin.providers.login.UsernamePasswordProvider</code> you can use.</p>
+<h3 id="admin_model">admin_model</h3>
+<p>Subclass instance of <code>fastapi_admin.models.AbstractAdmin</code>.</p>
 <h3 id="enable_captcha-pro-only">enable_captcha (💗 Pro only)</h3>
 <p>Show captcha in admin login page.</p>
+<h2 id="permission_provider-pro-only">permission_provider (💗 Pro only)</h2>
+<p>You can enable permission control by setting <code>permission_provider</code>.</p>
+<h3 id="admin_model_1">admin_model</h3>
+<p>Subclass of <code>fastapi_admin.models.AbstractAdmin</code>.</p>
+<h3 id="resource_model">resource_model</h3>
+<p>Subclass of <code>fastapi_admin.models.AbstractResource</code>.</p>
+<h3 id="permission_model">permission_model</h3>
+<p>Subclass of <code>fastapi_admin.models.AbstractPermission</code>.</p>
+<h3 id="role_model">role_model</h3>
+<p>Subclass of <code>fastapi_admin.models.AbstractRole</code>.</p>
+<h2 id="log_model">log_model</h2>
+<p>You can enable action log by set <code>log_model</code>, which is subclass of <code>fastapi_admin.models.AbstractLog</code>. After set that,
+all <code>delete/create/update</code> for model will be recorded.</p>
+<h2 id="search_provider-pro-only">search_provider  (💗 Pro only)</h2>
+<p>You can enable global search by setting <code>search_provider</code>, which is instance
+of <code>fastapi_admin.providers.search.SearchProvider</code>, and then will display a search input in all pages.</p>
                 
                   
                     
@@ -1029,7 +1156,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 1, 2021 13:20:09</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 3, 2021 16:50:07</span>
     
   </small>
 </div>
