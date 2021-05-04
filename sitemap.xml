@@ -60,11 +60,19 @@
      <lastmod>2021-05-04</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
+     <loc>https://github.com/fastapi-admin/fastapi-admin/reference/errors/</loc>
+     <lastmod>2021-05-04</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
      <loc>https://github.com/fastapi-admin/fastapi-admin/custom/page/</loc>
      <lastmod>2021-05-04</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/fastapi-admin/fastapi-admin/custom/overwrite/</loc>
+     <lastmod>2021-05-04</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://github.com/fastapi-admin/fastapi-admin/custom/widget/</loc>
      <lastmod>2021-05-04</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
@@ -76,7 +84,15 @@
      <lastmod>2021-05-04</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://github.com/fastapi-admin/fastapi-admin/custom/widget/</loc>
+     <loc>https://github.com/fastapi-admin/fastapi-admin/custom/search/</loc>
+     <lastmod>2021-05-04</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://github.com/fastapi-admin/fastapi-admin/custom/admin_log/</loc>
+     <lastmod>2021-05-04</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://github.com/fastapi-admin/fastapi-admin/custom/permission/</loc>
      <lastmod>2021-05-04</lastmod>
      <changefreq>daily</changefreq>
     </url><url>

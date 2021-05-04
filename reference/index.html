@@ -569,21 +569,14 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#role_model" class="md-nav__link">
-    role_model
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#log_model" class="md-nav__link">
-    log_model
+  <a href="#admin_log_provider" class="md-nav__link">
+    admin_log_provider
   </a>
   
 </li>
@@ -762,6 +755,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="errors/" class="md-nav__link">
+        Error Pages (💗 Pro only)
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -821,6 +826,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../custom/widget/" class="md-nav__link">
+        Widget
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../custom/login/" class="md-nav__link">
         Login Provider
       </a>
@@ -845,8 +862,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom/widget/" class="md-nav__link">
-        Widget
+      <a href="../custom/search/" class="md-nav__link">
+        Search Provider
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom/admin_log/" class="md-nav__link">
+        Admin Log Provider
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom/permission/" class="md-nav__link">
+        Permission Provider
       </a>
     </li>
   
@@ -1066,21 +1107,14 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#role_model" class="md-nav__link">
-    role_model
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#log_model" class="md-nav__link">
-    log_model
+  <a href="#admin_log_provider" class="md-nav__link">
+    admin_log_provider
   </a>
   
 </li>
@@ -1124,7 +1158,7 @@
 <h2 id="default_locale">default_locale</h2>
 <p>Current support <code>zh</code> and <code>en</code>, default is <code>en</code>.</p>
 <h2 id="template_folders">template_folders</h2>
-<p>Template folders used to override builtin templates.</p>
+<p>Template folders registered to jinja2 and also can be used to override builtin templates.</p>
 <h2 id="login_provider">login_provider</h2>
 <p>You can pass subclasses of <code>fastapi_admin.providers.login.LoginProvider</code>, there is a
 builtin <code>fastapi_admin.providers.login.UsernamePasswordProvider</code> you can use.</p>
@@ -1133,18 +1167,18 @@ builtin <code>fastapi_admin.providers.login.UsernamePasswordProvider</code> you 
 <h3 id="enable_captcha-pro-only">enable_captcha (💗 Pro only)</h3>
 <p>Show captcha in admin login page.</p>
 <h2 id="permission_provider-pro-only">permission_provider (💗 Pro only)</h2>
-<p>You can enable permission control by setting <code>permission_provider</code>.</p>
+<p>You can enable permission control by setting <code>permission_provider</code>, which is instance
+of <code>fastapi_admin.providers.permission.PermissionProvider</code> of its subclass.</p>
 <h3 id="admin_model_1">admin_model</h3>
 <p>Subclass of <code>fastapi_admin.models.AbstractAdmin</code>.</p>
 <h3 id="resource_model">resource_model</h3>
 <p>Subclass of <code>fastapi_admin.models.AbstractResource</code>.</p>
 <h3 id="permission_model">permission_model</h3>
 <p>Subclass of <code>fastapi_admin.models.AbstractPermission</code>.</p>
-<h3 id="role_model">role_model</h3>
-<p>Subclass of <code>fastapi_admin.models.AbstractRole</code>.</p>
-<h2 id="log_model">log_model</h2>
-<p>You can enable action log by set <code>log_model</code>, which is subclass of <code>fastapi_admin.models.AbstractLog</code>. After set that,
-all <code>delete/create/update</code> for model will be recorded.</p>
+<h2 id="admin_log_provider">admin_log_provider</h2>
+<p>You can enable action log by set <code>admin_log_provider</code>, which is instance
+of <code>fastapi_admin.providers.admin_log.AdminLogProvider</code> or its subclass. After set that, all <code>delete/create/update</code> for
+model will be recorded.</p>
 <h2 id="search_provider-pro-only">search_provider  (💗 Pro only)</h2>
 <p>You can enable global search by setting <code>search_provider</code>, which is instance
 of <code>fastapi_admin.providers.search.SearchProvider</code>, and then will display a search input in all pages.</p>
@@ -1156,7 +1190,7 @@ of <code>fastapi_admin.providers.search.SearchProvider</code>, and then will dis
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 4, 2021 14:33:30</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 4, 2021 15:34:00</span>
     
   </small>
 </div>

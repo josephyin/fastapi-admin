@@ -699,6 +699,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/errors/" class="md-nav__link">
+        Error Pages (💗 Pro only)
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -758,6 +770,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../custom/widget/" class="md-nav__link">
+        Widget
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../custom/login/" class="md-nav__link">
         Login Provider
       </a>
@@ -782,8 +806,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../../custom/widget/" class="md-nav__link">
-        Widget
+      <a href="../../custom/search/" class="md-nav__link">
+        Search Provider
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom/admin_log/" class="md-nav__link">
+        Admin Log Provider
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom/permission/" class="md-nav__link">
+        Permission Provider
       </a>
     </li>
   
@@ -1030,26 +1078,29 @@
 <span class="nd">@app</span><span class="o">.</span><span class="n">register</span>
 <span class="k">class</span> <span class="nc">Home</span><span class="p">(</span><span class="n">Link</span><span class="p">):</span>
     <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Home&quot;</span>
-    <span class="n">icon</span> <span class="o">=</span> <span class="s2">&quot;ti ti-home&quot;</span>
+    <span class="n">icon</span> <span class="o">=</span> <span class="s2">&quot;fas fa-home&quot;</span>
     <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/admin&quot;</span>
 </code></pre></div>
 <h3 id="model">Model</h3>
 <h4 id="field">Field</h4>
 <p>The <code>Field</code> is used in <code>Model</code> resource to define how to display and input every field in model page.</p>
 <p>The <code>Model</code> make a TortoiseORM model as a menu with CURD page.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">examples.models</span> <span class="kn">import</span> <span class="n">User</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">examples.models</span> <span class="kn">import</span> <span class="n">Admin</span>
 <span class="kn">from</span> <span class="nn">fastapi_admin.app</span> <span class="kn">import</span> <span class="n">app</span>
-<span class="kn">from</span> <span class="nn">fastapi_admin.resources</span> <span class="kn">import</span> <span class="n">Field</span><span class="p">,</span> <span class="n">Model</span>
+<span class="kn">from</span> <span class="nn">fastapi_admin.resources</span> <span class="kn">import</span> <span class="n">Field</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span><span class="n">Action</span>
 <span class="kn">from</span> <span class="nn">fastapi_admin.widgets</span> <span class="kn">import</span> <span class="n">displays</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">inputs</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">fastapi_admin.providers.file_upload</span> <span class="kn">import</span> <span class="n">FileUploadProvider</span>
 
+<span class="n">upload_provider</span> <span class="o">=</span> <span class="n">FileUploadProvider</span><span class="p">(</span><span class="n">uploads_dir</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s2">&quot;static&quot;</span><span class="p">,</span> <span class="s2">&quot;uploads&quot;</span><span class="p">))</span>
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">register</span>
-<span class="k">class</span> <span class="nc">UserResource</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;User&quot;</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">User</span>
-    <span class="n">icon</span> <span class="o">=</span> <span class="s2">&quot;ti ti-user&quot;</span>
-    <span class="n">page_pre_title</span> <span class="o">=</span> <span class="s2">&quot;user list&quot;</span>
-    <span class="n">page_title</span> <span class="o">=</span> <span class="s2">&quot;user model&quot;</span>
+<span class="k">class</span> <span class="nc">AdminResource</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Admin&quot;</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Admin</span>
+    <span class="n">icon</span> <span class="o">=</span> <span class="s2">&quot;fas fa-user&quot;</span>
+    <span class="n">page_pre_title</span> <span class="o">=</span> <span class="s2">&quot;admin list&quot;</span>
+    <span class="n">page_title</span> <span class="o">=</span> <span class="s2">&quot;admin model&quot;</span>
     <span class="n">filters</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">filters</span><span class="o">.</span><span class="n">Search</span><span class="p">(</span>
             <span class="n">name</span><span class="o">=</span><span class="s2">&quot;username&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="n">search_mode</span><span class="o">=</span><span class="s2">&quot;contains&quot;</span><span class="p">,</span> <span class="n">placeholder</span><span class="o">=</span><span class="s2">&quot;Search for username&quot;</span>
@@ -1072,10 +1123,15 @@
             <span class="n">display</span><span class="o">=</span><span class="n">displays</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;40&quot;</span><span class="p">),</span>
             <span class="n">input_</span><span class="o">=</span><span class="n">inputs</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">upload_provider</span><span class="o">=</span><span class="n">upload_provider</span><span class="p">),</span>
         <span class="p">),</span>
-        <span class="s2">&quot;is_superuser&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;is_active&quot;</span><span class="p">,</span>
         <span class="s2">&quot;created_at&quot;</span><span class="p">,</span>
     <span class="p">]</span>
+    <span class="n">can_create</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">get_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Action</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">get_bulk_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Action</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">[]</span>
 </code></pre></div>
 <h3 id="dropdown">Dropdown</h3>
 <p>The <code>Dropdown</code> can contains both <code>Link</code> and <code>Model</code>, which can be nested.</p>
@@ -1113,7 +1169,7 @@
         <span class="p">]</span>
 
     <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Content&quot;</span>
-    <span class="n">icon</span> <span class="o">=</span> <span class="s2">&quot;ti ti-package&quot;</span>
+    <span class="n">icon</span> <span class="o">=</span> <span class="s2">&quot;fas fa-bars&quot;</span>
     <span class="n">resources</span> <span class="o">=</span> <span class="p">[</span><span class="n">ProductResource</span><span class="p">,</span> <span class="n">CategoryResource</span><span class="p">]</span>
 </code></pre></div>
 <h3 id="whats-next">What's next?</h3>
@@ -1126,7 +1182,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 4, 2021 14:33:30</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 4, 2021 15:34:00</span>
     
   </small>
 </div>

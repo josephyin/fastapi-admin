@@ -596,6 +596,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/errors/" class="md-nav__link">
+        Error Pages (💗 Pro only)
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -655,6 +667,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../custom/widget/" class="md-nav__link">
+        Widget
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../custom/login/" class="md-nav__link">
         Login Provider
       </a>
@@ -679,8 +703,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../../custom/widget/" class="md-nav__link">
-        Widget
+      <a href="../../custom/search/" class="md-nav__link">
+        Search Provider
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom/admin_log/" class="md-nav__link">
+        Admin Log Provider
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom/permission/" class="md-nav__link">
+        Permission Provider
       </a>
     </li>
   
@@ -863,6 +911,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#site-search" class="md-nav__link">
+    Site Search
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1022,6 +1077,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#site-search" class="md-nav__link">
+    Site Search
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1079,6 +1141,13 @@
 <div class="highlight"><pre><span></span><code><span class="n">admin_app</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">maintenance</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="admin-log">Admin Log</h2>
+<p>If you want to log all <code>create/update/delete</code> actions, you can set <code>admin_log_provider</code> to <code>admin_app.configure(...)</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">admin_app</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">admin_log_provider</span><span class="o">=</span><span class="n">AdminLogProvider</span><span class="p">(</span><span class="n">Log</span><span class="p">))</span>
+</code></pre></div>
+<h2 id="site-search">Site Search</h2>
+<p>You can enable site search by set <code>search_provider</code> to <code>admin_app.configure(...)</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">admin_app</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">search_provider</span><span class="o">=</span><span class="n">SearchProvider</span><span class="p">())</span>
+</code></pre></div>
                 
                   
                     
@@ -1087,7 +1156,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 4, 2021 14:33:30</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 4, 2021 15:34:00</span>
     
   </small>
 </div>
