@@ -705,7 +705,7 @@
   
     <li class="md-nav__item">
       <a href="../../reference/errors/" class="md-nav__link">
-        Error Pages (💗 Pro only)
+        Error Pages
       </a>
     </li>
   
@@ -782,7 +782,40 @@
   
   
     <li class="md-nav__item">
-      <a href="../../custom/login/" class="md-nav__link">
+      <a href="../../custom/file_upload/" class="md-nav__link">
+        File Upload
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+      
+      <label class="md-nav__link" for="__nav_4_5">
+        Providers
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Providers" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Providers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom/providers/login/" class="md-nav__link">
         Login Provider
       </a>
     </li>
@@ -794,19 +827,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../custom/file/" class="md-nav__link">
-        File Upload Provider
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../custom/search/" class="md-nav__link">
+      <a href="../../custom/providers/search/" class="md-nav__link">
         Search Provider
       </a>
     </li>
@@ -818,7 +839,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../custom/admin_log/" class="md-nav__link">
+      <a href="../../custom/providers/admin_log/" class="md-nav__link">
         Admin Log Provider
       </a>
     </li>
@@ -830,9 +851,15 @@
   
   
     <li class="md-nav__item">
-      <a href="../../custom/permission/" class="md-nav__link">
+      <a href="../../custom/providers/permission/" class="md-nav__link">
         Permission Provider
       </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1087,12 +1114,13 @@
 <p>The <code>Model</code> make a TortoiseORM model as a menu with CURD page.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">examples.models</span> <span class="kn">import</span> <span class="n">Admin</span>
 <span class="kn">from</span> <span class="nn">fastapi_admin.app</span> <span class="kn">import</span> <span class="n">app</span>
-<span class="kn">from</span> <span class="nn">fastapi_admin.resources</span> <span class="kn">import</span> <span class="n">Field</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span><span class="n">Action</span>
+<span class="kn">from</span> <span class="nn">fastapi_admin.resources</span> <span class="kn">import</span> <span class="n">Field</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span> <span class="n">Action</span>
 <span class="kn">from</span> <span class="nn">fastapi_admin.widgets</span> <span class="kn">import</span> <span class="n">displays</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">inputs</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
-<span class="kn">from</span> <span class="nn">fastapi_admin.providers.file_upload</span> <span class="kn">import</span> <span class="n">FileUploadProvider</span>
+<span class="kn">from</span> <span class="nn">fastapi_admin.file_upload</span> <span class="kn">import</span> <span class="n">FileUpload</span>
 
-<span class="n">upload_provider</span> <span class="o">=</span> <span class="n">FileUploadProvider</span><span class="p">(</span><span class="n">uploads_dir</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s2">&quot;static&quot;</span><span class="p">,</span> <span class="s2">&quot;uploads&quot;</span><span class="p">))</span>
+<span class="n">upload_provider</span> <span class="o">=</span> <span class="n">FileUpload</span><span class="p">(</span><span class="n">uploads_dir</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s2">&quot;static&quot;</span><span class="p">,</span> <span class="s2">&quot;uploads&quot;</span><span class="p">))</span>
+
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">register</span>
 <span class="k">class</span> <span class="nc">AdminResource</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
@@ -1182,7 +1210,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 4, 2021 15:34:00</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 5, 2021 06:46:26</span>
     
   </small>
 </div>
