@@ -68,6 +68,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#display" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -492,10 +497,84 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Display
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         Display
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#display_1" class="md-nav__link">
+    Display
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datetimedisplay" class="md-nav__link">
+    DatetimeDisplay
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datedisplay" class="md-nav__link">
+    DateDisplay
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inputonly" class="md-nav__link">
+    InputOnly
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boolean" class="md-nav__link">
+    Boolean
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image" class="md-nav__link">
+    Image
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    Json
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -574,30 +653,6 @@
     <li class="md-nav__item">
       <a href="../../global_search/" class="md-nav__link">
         Global Search (💗 Pro only)
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../actions/" class="md-nav__link">
-        Actions
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../bulk_actions/" class="md-nav__link">
-        Bulk Actions
       </a>
     </li>
   
@@ -871,6 +926,80 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#display_1" class="md-nav__link">
+    Display
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datetimedisplay" class="md-nav__link">
+    DatetimeDisplay
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datedisplay" class="md-nav__link">
+    DateDisplay
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inputonly" class="md-nav__link">
+    InputOnly
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boolean" class="md-nav__link">
+    Boolean
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image" class="md-nav__link">
+    Image
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    Json
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
@@ -881,9 +1010,27 @@
                   </a>
                 
                 
-                  <h1>Display</h1>
-                
-                
+                <h1 id="display">Display</h1>
+<h2 id="display_1">Display</h2>
+<p>Default display, which will just display the value with any change.</p>
+<h2 id="datetimedisplay">DatetimeDisplay</h2>
+<p>Will display the value by the giving format, default is <code>%Y-%m-%d %H:%M:%S</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">DatetimeDisplay</span><span class="p">(</span><span class="n">Display</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">DATETIME_FORMAT</span><span class="p">):</span>
+</code></pre></div>
+<h2 id="datedisplay">DateDisplay</h2>
+<p>Will display the value by the giving format, default is <code>%Y-%m-%d</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">DatetimeDisplay</span><span class="p">(</span><span class="n">Display</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">DATETIME_FORMAT</span><span class="p">):</span>
+</code></pre></div>
+<h2 id="inputonly">InputOnly</h2>
+<p>Which is a special display widget, for that will not display in table content, but display in edit page only.</p>
+<h2 id="boolean">Boolean</h2>
+<p>Will display the value in bool mode.</p>
+<h2 id="image">Image</h2>
+<p>Will display the value as a image.</p>
+<h2 id="json">Json</h2>
+<p>Will display the value with json highlight.</p>
                 
                   
                     
@@ -892,7 +1039,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 7, 2021 11:20:09</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 7, 2021 14:55:27</span>
     
   </small>
 </div>

@@ -68,6 +68,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#filter" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -480,10 +485,77 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Filter
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         Filter
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#search" class="md-nav__link">
+    Search
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datetime" class="md-nav__link">
+    Datetime
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#date" class="md-nav__link">
+    Date
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#select" class="md-nav__link">
+    Select
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enum" class="md-nav__link">
+    Enum
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#foreignkey" class="md-nav__link">
+    ForeignKey
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -574,30 +646,6 @@
     <li class="md-nav__item">
       <a href="../../global_search/" class="md-nav__link">
         Global Search (💗 Pro only)
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../actions/" class="md-nav__link">
-        Actions
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../bulk_actions/" class="md-nav__link">
-        Bulk Actions
       </a>
     </li>
   
@@ -871,6 +919,73 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#search" class="md-nav__link">
+    Search
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datetime" class="md-nav__link">
+    Datetime
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#date" class="md-nav__link">
+    Date
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#select" class="md-nav__link">
+    Select
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enum" class="md-nav__link">
+    Enum
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#foreignkey" class="md-nav__link">
+    ForeignKey
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
@@ -881,9 +996,51 @@
                   </a>
                 
                 
-                  <h1>Filter</h1>
-                
-                
+                <h1 id="filter">Filter</h1>
+<p>The filter define how to filter the model resource.</p>
+<h2 id="search">Search</h2>
+<p>Search by a field.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">register</span>
+<span class="k">class</span> <span class="nc">AdminResource</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">filters</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">filters</span><span class="o">.</span><span class="n">Search</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;username&quot;</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span>
+            <span class="n">search_mode</span><span class="o">=</span><span class="s2">&quot;contains&quot;</span><span class="p">,</span>
+            <span class="n">placeholder</span><span class="o">=</span><span class="s2">&quot;Search for username&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">]</span>
+</code></pre></div>
+<ul>
+<li><code>search_mode</code> choices: <code>equal</code>,<code>contains</code>,<code>icontains</code>,<code>startswith</code>,<code>istartswith</code>,<code>endswith</code>,<code>iendswith</code>,<code>iexact</code>,<code>search</code></li>
+</ul>
+<h2 id="datetime">Datetime</h2>
+<p>Datetime field filter.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">register</span>
+<span class="k">class</span> <span class="nc">AdminResource</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">filters</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">filters</span><span class="o">.</span><span class="n">Datetime</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;created_at&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;CreatedAt&quot;</span><span class="p">),</span>
+    <span class="p">]</span>
+</code></pre></div>
+<h2 id="date">Date</h2>
+<p>Date field filter.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">register</span>
+<span class="k">class</span> <span class="nc">AdminResource</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">filters</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">filters</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;created_at&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;CreatedAt&quot;</span><span class="p">),</span>
+    <span class="p">]</span>
+</code></pre></div>
+<h2 id="select">Select</h2>
+<p>Select filter.</p>
+<h2 id="enum">Enum</h2>
+<p>Like select filter but choice from a enum class.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ProductResource</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">filters</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">filters</span><span class="o">.</span><span class="n">Enum</span><span class="p">(</span><span class="n">enum</span><span class="o">=</span><span class="n">enums</span><span class="o">.</span><span class="n">ProductType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ProductType&quot;</span><span class="p">),</span>
+    <span class="p">]</span>
+</code></pre></div>
+<h2 id="foreignkey">ForeignKey</h2>
+<p>Like select filter but choice from a <code>ForeignKey</code> model.</p>
                 
                   
                     
@@ -892,7 +1049,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 7, 2021 11:20:09</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 7, 2021 14:55:27</span>
     
   </small>
 </div>

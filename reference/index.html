@@ -619,30 +619,6 @@
   
   
     <li class="md-nav__item">
-      <a href="actions/" class="md-nav__link">
-        Actions
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="bulk_actions/" class="md-nav__link">
-        Bulk Actions
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="errors/" class="md-nav__link">
         Error Pages
       </a>
@@ -983,6 +959,7 @@ asyncio loop context.</p>
 <li><code>default_locale</code>: Current support <code>zh</code> and <code>en</code>, default is <code>en</code>.</li>
 <li><code>template_folders</code>: Template folders registered to jinja2 and also can be used to override builtin templates.</li>
 <li><code>providers</code>: List of providers to register, all are subclasses of <code>fastapi_admin.providers.Provider</code>.</li>
+<li><code>language_switch</code>: Whether show a language switch in page, default is <code>True</code>, and you should add <a href="/reference/middleware/#language_processor">language_processor</a> to enable that.</li>
 </ul>
                 
                   
@@ -992,7 +969,7 @@ asyncio loop context.</p>
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 7, 2021 11:20:09</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 7, 2021 14:55:27</span>
     
   </small>
 </div>
