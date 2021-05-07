@@ -1084,11 +1084,11 @@
 <p>There are some configs to configure the admin app, and you need to configure it on startup of <code>FastAPI</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">fastapi_admin.app</span> <span class="kn">import</span> <span class="n">app</span> <span class="k">as</span> <span class="n">admin_app</span>
 <span class="kn">from</span> <span class="nn">fastapi_admin.providers.login</span> <span class="kn">import</span> <span class="n">UsernamePasswordProvider</span>
-<span class="kn">from</span> <span class="nn">examples.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">examples.models</span> <span class="kn">import</span> <span class="n">Admin</span>
 <span class="kn">import</span> <span class="nn">aioredis</span>
 <span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
 
-<span class="n">login_provider</span> <span class="o">=</span> <span class="n">UsernamePasswordProvider</span><span class="p">(</span><span class="n">user_model</span><span class="o">=</span><span class="n">User</span><span class="p">,</span> <span class="n">enable_captcha</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">login_provider</span> <span class="o">=</span> <span class="n">UsernamePasswordProvider</span><span class="p">(</span><span class="n">admin_model</span><span class="o">=</span><span class="n">Admin</span><span class="p">,</span> <span class="n">enable_captcha</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
 
@@ -1125,12 +1125,11 @@
 <p>The <code>Model</code> make a TortoiseORM model as a menu with CURD page.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">examples.models</span> <span class="kn">import</span> <span class="n">Admin</span>
 <span class="kn">from</span> <span class="nn">fastapi_admin.app</span> <span class="kn">import</span> <span class="n">app</span>
-<span class="kn">from</span> <span class="nn">fastapi_admin.resources</span> <span class="kn">import</span> <span class="n">Field</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span> <span class="n">Action</span>
-<span class="kn">from</span> <span class="nn">fastapi_admin.widgets</span> <span class="kn">import</span> <span class="n">displays</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">inputs</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 <span class="kn">from</span> <span class="nn">fastapi_admin.file_upload</span> <span class="kn">import</span> <span class="n">FileUpload</span>
+<span class="kn">from</span> <span class="nn">fastapi_admin.resources</span> <span class="kn">import</span> <span class="n">Field</span><span class="p">,</span> <span class="n">Model</span>
+<span class="kn">from</span> <span class="nn">fastapi_admin.widgets</span> <span class="kn">import</span> <span class="n">displays</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">inputs</span>
 
-<span class="n">upload_provider</span> <span class="o">=</span> <span class="n">FileUpload</span><span class="p">(</span><span class="n">uploads_dir</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s2">&quot;static&quot;</span><span class="p">,</span> <span class="s2">&quot;uploads&quot;</span><span class="p">))</span>
+<span class="n">upload</span> <span class="o">=</span> <span class="n">FileUpload</span><span class="p">(</span><span class="n">uploads</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s2">&quot;static&quot;</span><span class="p">,</span> <span class="s2">&quot;uploads&quot;</span><span class="p">))</span>
 
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">register</span>
@@ -1160,17 +1159,10 @@
             <span class="n">name</span><span class="o">=</span><span class="s2">&quot;avatar&quot;</span><span class="p">,</span>
             <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Avatar&quot;</span><span class="p">,</span>
             <span class="n">display</span><span class="o">=</span><span class="n">displays</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;40&quot;</span><span class="p">),</span>
-            <span class="n">input_</span><span class="o">=</span><span class="n">inputs</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">upload_provider</span><span class="o">=</span><span class="n">upload_provider</span><span class="p">),</span>
+            <span class="n">input_</span><span class="o">=</span><span class="n">inputs</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">upload</span><span class="o">=</span><span class="n">upload</span><span class="p">),</span>
         <span class="p">),</span>
         <span class="s2">&quot;created_at&quot;</span><span class="p">,</span>
     <span class="p">]</span>
-    <span class="n">can_create</span> <span class="o">=</span> <span class="kc">False</span>
-
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">request</span><span class="p">:</span><span class="n">Request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Action</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="p">[]</span>
-
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_bulk_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">request</span><span class="p">:</span><span class="n">Request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Action</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="p">[]</span>
 </code></pre></div>
 <h3 id="dropdown">Dropdown</h3>
 <p>The <code>Dropdown</code> can contains both <code>Link</code> and <code>Model</code>, which can be nested.</p>
@@ -1221,7 +1213,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 7, 2021 02:19:35</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 7, 2021 11:20:09</span>
     
   </small>
 </div>

@@ -477,69 +477,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#general-configuration" class="md-nav__link">
-    General configuration
-  </a>
-  
-    <nav class="md-nav" aria-label="General configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#label" class="md-nav__link">
-    label
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#icon" class="md-nav__link">
-    icon
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#link" class="md-nav__link">
     Link
-  </a>
-  
-    <nav class="md-nav" aria-label="Link">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#url" class="md-nav__link">
-    url
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#target" class="md-nav__link">
-    target
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#field" class="md-nav__link">
-    Field
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#action" class="md-nav__link">
-    Action
   </a>
   
 </li>
@@ -548,40 +487,6 @@
   <a href="#model" class="md-nav__link">
     Model
   </a>
-  
-    <nav class="md-nav" aria-label="Model">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#get_actions" class="md-nav__link">
-    get_actions
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get_bulk_actions" class="md-nav__link">
-    get_bulk_actions
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#row_attributes" class="md-nav__link">
-    row_attributes
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cell_attributes" class="md-nav__link">
-    cell_attributes
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1034,69 +939,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#general-configuration" class="md-nav__link">
-    General configuration
-  </a>
-  
-    <nav class="md-nav" aria-label="General configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#label" class="md-nav__link">
-    label
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#icon" class="md-nav__link">
-    icon
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#link" class="md-nav__link">
     Link
-  </a>
-  
-    <nav class="md-nav" aria-label="Link">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#url" class="md-nav__link">
-    url
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#target" class="md-nav__link">
-    target
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#field" class="md-nav__link">
-    Field
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#action" class="md-nav__link">
-    Action
   </a>
   
 </li>
@@ -1105,40 +949,6 @@
   <a href="#model" class="md-nav__link">
     Model
   </a>
-  
-    <nav class="md-nav" aria-label="Model">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#get_actions" class="md-nav__link">
-    get_actions
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get_bulk_actions" class="md-nav__link">
-    get_bulk_actions
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#row_attributes" class="md-nav__link">
-    row_attributes
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cell_attributes" class="md-nav__link">
-    cell_attributes
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1167,26 +977,22 @@
                 
                 
                 <h1 id="resource">Resource</h1>
-<p>There are three kinds of resources, <code>Link</code>,<code>Model</code> and <code>Dropdown</code>.</p>
-<h2 id="general-configuration">General configuration</h2>
-<p>The following are the general configurations of three kinds of resources.</p>
-<h3 id="label">label</h3>
-<p>Nav bar menu name.</p>
-<h3 id="icon">icon</h3>
-<p>Icon name comes from <a href="https://fontawesome.com">https://fontawesome.com</a>, like <code>fas fa-user</code> will display a user icon in menu.</p>
+<p>There are three kinds of resources, <code>Link</code>,<code>Model</code> and <code>Dropdown</code>, all are inherited
+from <code>fastapi_admin.resources.Resource</code>.</p>
+<p>You should use <code>app.register</code> decorator to register a resource.</p>
 <h2 id="link">Link</h2>
-<p>General <code>a</code> tag menu.</p>
-<h3 id="url">url</h3>
-<p><code>href</code> attr of <code>a</code> tag.</p>
-<h3 id="target">target</h3>
-<p><code>target</code> attr of <code>a</code> tag, default is <code>_self</code>.</p>
-<h2 id="field">Field</h2>
-<h2 id="action">Action</h2>
+<p><code>Link</code> just display a menu with a link.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">fastapi_admin.app</span> <span class="kn">import</span> <span class="n">app</span>
+<span class="kn">from</span> <span class="nn">fastapi_admin.resources</span> <span class="kn">import</span> <span class="n">Link</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">register</span>
+<span class="k">class</span> <span class="nc">Home</span><span class="p">(</span><span class="n">Link</span><span class="p">):</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Home&quot;</span>
+    <span class="n">icon</span> <span class="o">=</span> <span class="s2">&quot;fas fa-home&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/admin&quot;</span>
+</code></pre></div>
 <h2 id="model">Model</h2>
-<h3 id="get_actions">get_actions</h3>
-<h3 id="get_bulk_actions">get_bulk_actions</h3>
-<h3 id="row_attributes">row_attributes</h3>
-<h3 id="cell_attributes">cell_attributes</h3>
 <h2 id="dropdown">Dropdown</h2>
                 
                   
@@ -1196,7 +1002,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 7, 2021 02:19:35</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 7, 2021 11:20:09</span>
     
   </small>
 </div>
