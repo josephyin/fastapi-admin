@@ -715,73 +715,10 @@
   
   
   
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
-      
-      <label class="md-nav__link" for="__nav_4_5">
-        Providers
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Providers" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_5">
-          <span class="md-nav__icon md-icon"></span>
-          Providers
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../../custom/providers/login/" class="md-nav__link">
-        Login Provider
+      <a href="../../custom/provider/" class="md-nav__link">
+        Provider
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../custom/providers/search/" class="md-nav__link">
-        Search Provider
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../custom/providers/admin_log/" class="md-nav__link">
-        Admin Log Provider
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../custom/providers/permission/" class="md-nav__link">
-        Permission Provider
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
     </li>
   
 
@@ -940,12 +877,22 @@
                 
                 <h1 id="middleware">Middleware</h1>
 <h2 id="language_processor">language_processor</h2>
-<p>By default <code>fastapi-admin</code> support both <code>Chinese</code> and <code>English</code> and will display a language switch in page. To enable that, you should add <code>language_processor</code> middleware.</p>
-<div class="highlight"><pre><span></span><code><span class="n">admin_app</span><span class="o">.</span><span class="n">add_middleware</span><span class="p">(</span><span class="n">BaseHTTPMiddleware</span><span class="p">,</span> <span class="n">dispatch</span><span class="o">=</span><span class="n">middlewares</span><span class="o">.</span><span class="n">language_processor</span><span class="p">)</span>
+<p>By default <code>fastapi-admin</code> support both <code>Chinese</code> and <code>English</code> and will display a language switch in page. To enable
+that, you should add <code>language_processor</code> middleware.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">starlette.middleware.base</span> <span class="kn">import</span> <span class="n">BaseHTTPMiddleware</span>
+<span class="kn">from</span> <span class="nn">fastapi_admin</span> <span class="kn">import</span> <span class="n">middlewares</span>
+<span class="kn">from</span> <span class="nn">fastapi_admin.app</span> <span class="kn">import</span> <span class="n">app</span> <span class="k">as</span> <span class="n">admin_app</span>
+
+<span class="n">admin_app</span><span class="o">.</span><span class="n">add_middleware</span><span class="p">(</span><span class="n">BaseHTTPMiddleware</span><span class="p">,</span> <span class="n">dispatch</span><span class="o">=</span><span class="n">middlewares</span><span class="o">.</span><span class="n">language_processor</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="loginpasswordmaxtrymiddleware-pro-only">LoginPasswordMaxTryMiddleware (💗 Pro only)</h2>
 <p>If you want limit login failed ip with error password, you can use <code>LoginPasswordMaxTryMiddleware</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="n">admin_app</span><span class="o">.</span><span class="n">add_middleware</span><span class="p">(</span><span class="n">BaseHTTPMiddleware</span><span class="p">,</span> <span class="n">dispatch</span><span class="o">=</span><span class="n">LoginPasswordMaxTryMiddleware</span><span class="p">(</span><span class="n">max_times</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">after_seconds</span><span class="o">=</span><span class="mi">3600</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">starlette.middleware.base</span> <span class="kn">import</span> <span class="n">BaseHTTPMiddleware</span>
+<span class="kn">from</span> <span class="nn">fastapi_admin</span> <span class="kn">import</span> <span class="n">middlewares</span>
+<span class="kn">from</span> <span class="nn">fastapi_admin.app</span> <span class="kn">import</span> <span class="n">app</span> <span class="k">as</span> <span class="n">admin_app</span>
+
+<span class="n">admin_app</span><span class="o">.</span><span class="n">add_middleware</span><span class="p">(</span><span class="n">BaseHTTPMiddleware</span><span class="p">,</span>
+                         <span class="n">dispatch</span><span class="o">=</span><span class="n">middlewares</span><span class="o">.</span><span class="n">LoginPasswordMaxTryMiddleware</span><span class="p">(</span><span class="n">max_times</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">after_seconds</span><span class="o">=</span><span class="mi">3600</span><span class="p">))</span>
 </code></pre></div>
 <p>After that, user can try max <code>3</code> times password, if all failed, the ip will be limited <code>3600</code> seconds.</p>
                 
@@ -956,7 +903,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 7, 2021 14:55:27</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 8, 2021 13:22:04</span>
     
   </small>
 </div>

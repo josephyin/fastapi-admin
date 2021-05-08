@@ -666,73 +666,10 @@
   
   
   
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
-      
-      <label class="md-nav__link" for="__nav_4_5">
-        Providers
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Providers" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_5">
-          <span class="md-nav__icon md-icon"></span>
-          Providers
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../../custom/providers/login/" class="md-nav__link">
-        Login Provider
+      <a href="../../custom/provider/" class="md-nav__link">
+        Provider
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../custom/providers/search/" class="md-nav__link">
-        Search Provider
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../custom/providers/admin_log/" class="md-nav__link">
-        Admin Log Provider
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../custom/providers/permission/" class="md-nav__link">
-        Permission Provider
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
     </li>
   
 
@@ -1058,20 +995,24 @@
 <div class="highlight"><pre><span></span><code><span class="n">admin_app</span><span class="o">.</span><span class="n">add_middleware</span><span class="p">(</span><span class="n">BaseHTTPMiddleware</span><span class="p">,</span> <span class="n">dispatch</span><span class="o">=</span><span class="n">LoginPasswordMaxTryMiddleware</span><span class="p">(</span><span class="n">max_times</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">after_seconds</span><span class="o">=</span><span class="mi">360</span><span class="p">))</span>
 </code></pre></div>
 <h2 id="permission-control">Permission Control</h2>
+<p><code>PermissionProvider</code> allow you to configure the access control for resources of admin users with permissions <code>read</code>
+/<code>create</code>/<code>update</code>/<code>delete</code>.</p>
 <h2 id="additional-file-upload">Additional File Upload</h2>
 <h3 id="aliyunoss">ALiYunOSS</h3>
+<p>File upload for ALiYunOSS.</p>
 <h3 id="awss3">AwsS3</h3>
+<p>File upload for AWS S3.</p>
 <h2 id="maintenance">Maintenance</h2>
 <p>If your site is in maintenance, you can set <code>true</code> to <code>admin_app.configure(...)</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="n">admin_app</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">maintenance</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">admin_app</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">maintenance</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="admin-log">Admin Log</h2>
 <p>If you want to log all <code>create/update/delete</code> actions, you can add <code>AdminLogProvider</code> to <code>admin_app.configure(...)</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="n">admin_app</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">providers</span><span class="o">=</span><span class="p">[</span><span class="n">AdminLogProvider</span><span class="p">(</span><span class="n">Log</span><span class="p">)])</span>
+<div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">admin_app</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">providers</span><span class="o">=</span><span class="p">[</span><span class="n">AdminLogProvider</span><span class="p">(</span><span class="n">Log</span><span class="p">)])</span>
 </code></pre></div>
 <h2 id="site-search">Site Search</h2>
 <p>You can enable site search by add <code>SearchProvider</code> to <code>admin_app.configure(...)</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="n">admin_app</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">providers</span><span class="o">=</span><span class="p">[</span><span class="n">SearchProvider</span><span class="p">()])</span>
+<div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">admin_app</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">providers</span><span class="o">=</span><span class="p">[</span><span class="n">SearchProvider</span><span class="p">()])</span>
 </code></pre></div>
                 
                   
@@ -1081,7 +1022,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 7, 2021 14:55:27</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 8, 2021 13:22:04</span>
     
   </small>
 </div>

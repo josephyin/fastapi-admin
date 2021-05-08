@@ -769,73 +769,10 @@
   
   
   
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
-      
-      <label class="md-nav__link" for="__nav_4_5">
-        Providers
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Providers" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_5">
-          <span class="md-nav__icon md-icon"></span>
-          Providers
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../../custom/providers/login/" class="md-nav__link">
-        Login Provider
+      <a href="../../custom/provider/" class="md-nav__link">
+        Provider
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../custom/providers/search/" class="md-nav__link">
-        Search Provider
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../custom/providers/admin_log/" class="md-nav__link">
-        Admin Log Provider
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../custom/providers/permission/" class="md-nav__link">
-        Permission Provider
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
     </li>
   
 
@@ -1064,7 +1001,11 @@
 <span class="kn">import</span> <span class="nn">aioredis</span>
 <span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
 
-<span class="n">login_provider</span> <span class="o">=</span> <span class="n">UsernamePasswordProvider</span><span class="p">(</span><span class="n">admin_model</span><span class="o">=</span><span class="n">Admin</span><span class="p">,</span> <span class="n">enable_captcha</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">login_provider</span> <span class="o">=</span> <span class="n">UsernamePasswordProvider</span><span class="p">(</span>
+    <span class="n">admin_model</span><span class="o">=</span><span class="n">Admin</span><span class="p">,</span>
+    <span class="n">enable_captcha</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">login_logo_url</span><span class="o">=</span><span class="s2">&quot;https://preview.tabler.io/static/logo.svg&quot;</span>
+<span class="p">)</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
 
@@ -1074,7 +1015,6 @@
     <span class="n">redis</span> <span class="o">=</span> <span class="k">await</span> <span class="n">aioredis</span><span class="o">.</span><span class="n">create_redis_pool</span><span class="p">(</span><span class="s2">&quot;redis://localhost&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span>
     <span class="n">admin_app</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span>
         <span class="n">logo_url</span><span class="o">=</span><span class="s2">&quot;https://preview.tabler.io/static/logo-white.svg&quot;</span><span class="p">,</span>
-        <span class="n">login_logo_url</span><span class="o">=</span><span class="s2">&quot;https://preview.tabler.io/static/logo.svg&quot;</span><span class="p">,</span>
         <span class="n">template_folders</span><span class="o">=</span><span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s2">&quot;templates&quot;</span><span class="p">)],</span>
         <span class="n">providers</span><span class="o">=</span><span class="p">[</span><span class="n">login_provider</span><span class="p">],</span>
         <span class="n">redis</span><span class="o">=</span><span class="n">redis</span><span class="p">,</span>
@@ -1181,6 +1121,7 @@
 </code></pre></div>
 <h3 id="whats-next">What's next?</h3>
 <p>That's all, you can run your app now. For more reference you can see <a href="/reference">Reference</a>.</p>
+<p>Or you can see full <a href="https://github.com/fastapi-admin/fastapi-admin/tree/dev/examples">examples</a>.</p>
                 
                   
                     
@@ -1189,7 +1130,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 7, 2021 14:55:27</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 8, 2021 13:22:04</span>
     
   </small>
 </div>
