@@ -564,13 +564,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#language_processor" class="md-nav__link">
-    language_processor
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#loginpasswordmaxtrymiddleware-pro-only" class="md-nav__link">
     LoginPasswordMaxTryMiddleware (💗 Pro only)
   </a>
@@ -857,13 +850,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#language_processor" class="md-nav__link">
-    language_processor
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#loginpasswordmaxtrymiddleware-pro-only" class="md-nav__link">
     LoginPasswordMaxTryMiddleware (💗 Pro only)
   </a>
@@ -888,15 +874,6 @@
                 
                 
                 <h1 id="middleware">Middleware</h1>
-<h2 id="language_processor">language_processor</h2>
-<p>By default <code>fastapi-admin</code> support both <code>Chinese</code> and <code>English</code> and will display a language switch in page. To enable
-that, you should add <code>language_processor</code> middleware.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">starlette.middleware.base</span> <span class="kn">import</span> <span class="n">BaseHTTPMiddleware</span>
-<span class="kn">from</span> <span class="nn">fastapi_admin</span> <span class="kn">import</span> <span class="n">middlewares</span>
-<span class="kn">from</span> <span class="nn">fastapi_admin.app</span> <span class="kn">import</span> <span class="n">app</span> <span class="k">as</span> <span class="n">admin_app</span>
-
-<span class="n">admin_app</span><span class="o">.</span><span class="n">add_middleware</span><span class="p">(</span><span class="n">BaseHTTPMiddleware</span><span class="p">,</span> <span class="n">dispatch</span><span class="o">=</span><span class="n">middlewares</span><span class="o">.</span><span class="n">language_processor</span><span class="p">)</span>
-</code></pre></div>
 <h2 id="loginpasswordmaxtrymiddleware-pro-only">LoginPasswordMaxTryMiddleware (💗 Pro only)</h2>
 <p>If you want limit login failed ip with error password, you can use <code>LoginPasswordMaxTryMiddleware</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">starlette.middleware.base</span> <span class="kn">import</span> <span class="n">BaseHTTPMiddleware</span>
@@ -915,7 +892,7 @@ that, you should add <code>language_processor</code> middleware.</p>
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 10, 2021 07:48:37</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 11, 2021 14:31:06</span>
       
     
   </small>

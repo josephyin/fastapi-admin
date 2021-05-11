@@ -876,7 +876,7 @@
                 <h1 id="permission-control-pro-only">Permission Control (💗 Pro only)</h1>
 <p>There are for kinds of permissions builtin. The <code>Link</code> has only <code>read</code>, and <code>Model</code> resource has all kinds of
 permissions.</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Permission</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Permission</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
     <span class="n">create</span> <span class="o">=</span> <span class="s2">&quot;create&quot;</span>
     <span class="n">delete</span> <span class="o">=</span> <span class="s2">&quot;delete&quot;</span>
     <span class="n">update</span> <span class="o">=</span> <span class="s2">&quot;update&quot;</span>
@@ -934,7 +934,7 @@ role and relate admins in dashboard and configure permissions yourself.</p>
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 10, 2021 07:48:37</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 11, 2021 14:31:06</span>
       
     
   </small>

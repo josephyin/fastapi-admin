@@ -905,10 +905,11 @@ asyncio loop context.</p>
 <li><code>admin_path</code>: Default is <code>/admin</code>, but you can change to other path.</li>
 <li><code>maintenance</code>: If set to <code>true</code>, all pages will be redirected to the <code>/maintenance</code> page. (💗 Pro only)</li>
 <li><code>redis</code>: Instance of <code>aioredis</code>.</li>
-<li><code>default_locale</code>: Current support <code>zh</code> and <code>en</code>, default is <code>en</code>.</li>
+<li><code>default_locale</code>: Current support <code>zh_CN</code> and <code>en_US</code>, default is <code>en_US</code>.</li>
 <li><code>template_folders</code>: Template folders registered to jinja2 and also can be used to override builtin templates.</li>
 <li><code>providers</code>: List of providers to register, all are subclasses of <code>fastapi_admin.providers.Provider</code>.</li>
-<li><code>language_switch</code>: Whether show a language switch in page, default is <code>True</code>, and you should add <a href="/reference/middleware/#language_processor">language_processor</a> to enable that.</li>
+<li><code>language_switch</code>: Whether show a language switch in page, default is <code>True</code>.</li>
+<li><code>default_layout</code>: Set default layout, current there are both layouts <code>layout.html</code> and <code>layout-navbar.html</code>, default is <code>layout.html</code>. (💗 Pro only)</li>
 </ul>
                 
                   
@@ -918,7 +919,7 @@ asyncio loop context.</p>
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 10, 2021 07:48:37</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 11, 2021 14:31:06</span>
       
     
   </small>
