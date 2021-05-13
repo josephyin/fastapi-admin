@@ -943,13 +943,13 @@ you can use <code>OAuth2Provider</code>.</p>
                 <span class="n">Admin</span><span class="p">,</span>
                 <span class="n">settings</span><span class="o">.</span><span class="n">GOOGLE_CLIENT_ID</span><span class="p">,</span>
                 <span class="n">settings</span><span class="o">.</span><span class="n">GOOGLE_CLIENT_SECRET</span><span class="p">,</span>
-                <span class="n">redirect_uri</span><span class="o">=</span><span class="s2">&quot;https://fastapi-admin-pro.long2ice.cn/admin/login/google_oauth2_provider&quot;</span><span class="p">,</span>
+                <span class="n">redirect_uri</span><span class="o">=</span><span class="s2">&quot;https://fastapi-admin-pro.long2ice.cn/admin/oauth2/google_oauth2_provider&quot;</span><span class="p">,</span>
             <span class="p">),</span>
         <span class="p">]</span>
     <span class="p">)</span>
 </code></pre></div>
 <p>If you want custom oauth2 provider, just inherit <code>fastapi_admin.providers.login.OAuth2Provider</code> and implement its
-methods.</p>
+methods. And the <code>redirect_uri</code> format is <code>{server_url}/{admin_path}/oauth2/{provider_name}</code>.</p>
                 
                   
                     
@@ -958,7 +958,7 @@ methods.</p>
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 12, 2021 08:16:16</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 13, 2021 08:10:04</span>
       
     
   </small>
