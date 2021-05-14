@@ -698,6 +698,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom/action/" class="md-nav__link">
+        Extra Actions
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -855,6 +867,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#oauth2" class="md-nav__link">
+    OAuth2
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1006,6 +1025,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#oauth2" class="md-nav__link">
+    OAuth2
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1056,6 +1082,20 @@
 <p>You can use notification by adding <code>NotificationProvider</code> to `admin_app.configure(...) implement by websocket.</p>
 <div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">admin_app</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">providers</span><span class="o">=</span><span class="p">[</span><span class="n">NotificationProvider</span><span class="p">()])</span>
 </code></pre></div>
+<h2 id="oauth2">OAuth2</h2>
+<p>Current there are two builtin oauth2 implementations <code>GitHubOAuth2Provider</code> and <code>GoogleOAuth2Provider</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">admin_app</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span>
+    <span class="n">providers</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">GitHubProvider</span><span class="p">(</span><span class="n">Admin</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">GITHUB_CLIENT_ID</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">GITHUB_CLIENT_SECRET</span><span class="p">),</span>
+        <span class="n">GoogleProvider</span><span class="p">(</span>
+            <span class="n">Admin</span><span class="p">,</span>
+            <span class="n">settings</span><span class="o">.</span><span class="n">GOOGLE_CLIENT_ID</span><span class="p">,</span>
+            <span class="n">settings</span><span class="o">.</span><span class="n">GOOGLE_CLIENT_SECRET</span><span class="p">,</span>
+            <span class="n">redirect_uri</span><span class="o">=</span><span class="s2">&quot;https://fastapi-admin-pro.long2ice.cn/admin/oauth2/google_oauth2_provider&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>
                 
                   
                     
@@ -1064,7 +1104,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 14, 2021 08:42:38</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 14, 2021 14:06:08</span>
       
     
   </small>
