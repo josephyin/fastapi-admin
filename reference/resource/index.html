@@ -498,6 +498,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#computefield" class="md-nav__link">
+    ComputeField
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#model" class="md-nav__link">
     Model
   </a>
@@ -529,6 +536,13 @@
           <li class="md-nav__item">
   <a href="#cell_attributes" class="md-nav__link">
     cell_attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_compute_fields" class="md-nav__link">
+    get_compute_fields
   </a>
   
 </li>
@@ -957,6 +971,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#computefield" class="md-nav__link">
+    ComputeField
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#model" class="md-nav__link">
     Model
   </a>
@@ -988,6 +1009,13 @@
           <li class="md-nav__item">
   <a href="#cell_attributes" class="md-nav__link">
     cell_attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_compute_fields" class="md-nav__link">
+    get_compute_fields
   </a>
   
 </li>
@@ -1078,6 +1106,21 @@ actions with return empty list.</p>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">get_bulk_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Action</span><span class="p">]:</span>
         <span class="k">return</span> <span class="p">[]</span>
 </code></pre></div>
+<h2 id="computefield">ComputeField</h2>
+<p>The class that <code>model.get_compute_fields</code> used.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ComputeField</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">label</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+<p>What you need to do is just override the <code>get_value</code> method.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">RestDays</span><span class="p">(</span><span class="n">ComputeField</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="n">days</span> <span class="o">=</span> <span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="o">-</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">())</span><span class="o">.</span><span class="n">days</span>
+        <span class="k">return</span> <span class="n">days</span> <span class="k">if</span> <span class="n">days</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+</code></pre></div>
 <h2 id="model">Model</h2>
 <p><code>Model</code> is the core resource, which make TortoiseORM model as a menu and display a data table with create, update, and
 delete.</p>
@@ -1137,6 +1180,13 @@ field.</p>
             <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;bg-danger text-white&quot;</span><span class="p">}</span>
         <span class="k">return</span> <span class="k">await</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">cell_attributes</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">field</span><span class="p">)</span>
 </code></pre></div>
+<h3 id="get_compute_fields">get_compute_fields</h3>
+<p>In some cases we need show some extra fields which are computed from other fields, you can use <code>get_compute_fields</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">register</span>
+<span class="k">class</span> <span class="nc">SponsorResource</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_compute_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ComputeField</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">RestDays</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;invalid_date&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Days Remaining&quot;</span><span class="p">)]</span>
+</code></pre></div>
 <h2 id="dropdown">Dropdown</h2>
 <p>The dropdown resource just contains <code>Link</code> and <code>Model</code> resource, and which can be nested.</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">register</span>
@@ -1153,7 +1203,7 @@ field.</p>
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 24, 2021 12:04:10</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 24, 2021 12:13:45</span>
       
     
   </small>
