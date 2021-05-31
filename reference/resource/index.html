@@ -505,6 +505,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#toolbaraction" class="md-nav__link">
+    ToolbarAction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#model" class="md-nav__link">
     Model
   </a>
@@ -543,6 +550,13 @@
           <li class="md-nav__item">
   <a href="#get_compute_fields" class="md-nav__link">
     get_compute_fields
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_toolbar_actions" class="md-nav__link">
+    get_toolbar_actions
   </a>
   
 </li>
@@ -978,6 +992,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#toolbaraction" class="md-nav__link">
+    ToolbarAction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#model" class="md-nav__link">
     Model
   </a>
@@ -1016,6 +1037,13 @@
           <li class="md-nav__item">
   <a href="#get_compute_fields" class="md-nav__link">
     get_compute_fields
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_toolbar_actions" class="md-nav__link">
+    get_toolbar_actions
   </a>
   
 </li>
@@ -1121,6 +1149,11 @@ actions with return empty list.</p>
         <span class="n">days</span> <span class="o">=</span> <span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="o">-</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">())</span><span class="o">.</span><span class="n">days</span>
         <span class="k">return</span> <span class="n">days</span> <span class="k">if</span> <span class="n">days</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
 </code></pre></div>
+<h2 id="toolbaraction">ToolbarAction</h2>
+<p>The class that <code>mode.get_toolbar_actions</code> used.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ToolbarAction</span><span class="p">(</span><span class="n">Action</span><span class="p">):</span>
+    <span class="n">class_</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</code></pre></div>
 <h2 id="model">Model</h2>
 <p><code>Model</code> is the core resource, which make TortoiseORM model as a menu and display a data table with create, update, and
 delete.</p>
@@ -1148,7 +1181,6 @@ delete.</p>
 <li><code>page_title</code>: Show page title in content.</li>
 <li><code>filters</code>: Define filters for the model, which will display filter inputs in table above, all kinds of filters you can
   find in <a href="/reference/widget/filter/">Filter</a>.</li>
-<li><code>can_create</code>: Whether show a <code>create</code> button there.</li>
 </ul>
 <h3 id="row_attributes">row_attributes</h3>
 <p>You can add extra attributes to each row by use <code>row_attributes</code>.</p>
@@ -1187,6 +1219,16 @@ field.</p>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">get_compute_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ComputeField</span><span class="p">]:</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">RestDays</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;invalid_date&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Days Remaining&quot;</span><span class="p">)]</span>
 </code></pre></div>
+<h3 id="get_toolbar_actions">get_toolbar_actions</h3>
+<p>Show toolbar actions top right of the table.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">register</span>
+<span class="k">class</span> <span class="nc">CategoryResource</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_toolbar_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ToolbarAction</span><span class="p">]:</span>
+        <span class="n">actions</span> <span class="o">=</span> <span class="k">await</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_toolbar_actions</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+        <span class="n">actions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">import_export_provider</span><span class="o">.</span><span class="n">import_action</span><span class="p">)</span>
+        <span class="n">actions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">import_export_provider</span><span class="o">.</span><span class="n">export_action</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">actions</span>
+</code></pre></div>
 <h2 id="dropdown">Dropdown</h2>
 <p>The dropdown resource just contains <code>Link</code> and <code>Model</code> resource, and which can be nested.</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">register</span>
@@ -1203,7 +1245,7 @@ field.</p>
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 31, 2021 13:00:37</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 31, 2021 15:26:44</span>
       
     
   </small>
