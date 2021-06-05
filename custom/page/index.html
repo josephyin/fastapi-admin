@@ -654,9 +654,53 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Custom Page
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Custom Page
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#template-folders" class="md-nav__link">
+    Template folders
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#write-router" class="md-nav__link">
+    Write router
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#register-resource" class="md-nav__link">
+    Register resource
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -837,6 +881,35 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#template-folders" class="md-nav__link">
+    Template folders
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#write-router" class="md-nav__link">
+    Write router
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#register-resource" class="md-nav__link">
+    Register resource
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -853,6 +926,45 @@
                 
                 
                 <h1 id="custom-page">Custom Page</h1>
+<p>It is easy to create custom pages.</p>
+<h2 id="template-folders">Template folders</h2>
+<p>You should configure your template folders when configure <code>fastapi-admin</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
+<span class="kn">from</span> <span class="nn">fastapi_admin.app</span> <span class="kn">import</span> <span class="n">app</span> <span class="k">as</span> <span class="n">admin_app</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">on_event</span><span class="p">(</span><span class="s2">&quot;startup&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">startup</span><span class="p">():</span>
+    <span class="k">await</span> <span class="n">admin_app</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">template_folders</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;templates&quot;</span><span class="p">])</span>
+</code></pre></div>
+<h2 id="write-router">Write router</h2>
+<p>Then write a router to render the template.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">fastapi_admin.app</span> <span class="kn">import</span> <span class="n">app</span> <span class="k">as</span> <span class="n">admin_app</span>
+<span class="kn">from</span> <span class="nn">fastapi_admin.template</span> <span class="kn">import</span> <span class="n">templates</span>
+<span class="kn">from</span> <span class="nn">starlette.requests</span> <span class="kn">import</span> <span class="n">Request</span>
+
+
+<span class="nd">@admin_app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">home</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">templates</span><span class="o">.</span><span class="n">TemplateResponse</span><span class="p">(</span><span class="s2">&quot;dashboard.html&quot;</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;request&quot;</span><span class="p">:</span> <span class="n">request</span><span class="p">})</span>
+</code></pre></div>
+<p>Don't forget to create the template <code>dashboard.html</code> and write content.</p>
+<h2 id="register-resource">Register resource</h2>
+<p>Finally, register it as a <code>Link</code> resource.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">fastapi_admin.app</span> <span class="kn">import</span> <span class="n">app</span> <span class="k">as</span> <span class="n">admin_app</span>
+<span class="kn">from</span> <span class="nn">fastapi_admin.resources</span> <span class="kn">import</span> <span class="n">Link</span>
+
+
+<span class="nd">@admin_app</span><span class="o">.</span><span class="n">register</span>
+<span class="k">class</span> <span class="nc">Dashboard</span><span class="p">(</span><span class="n">Link</span><span class="p">):</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Dashboard&quot;</span>
+    <span class="n">icon</span> <span class="o">=</span> <span class="s2">&quot;fas fa-home&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/admin&quot;</span>
+</code></pre></div>
+<p>That's all, if you are a superuser, you can see a menu in navbar now, otherwise you need give the admin permission of
+the resource.</p>
                 
                   
                     
@@ -861,7 +973,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 4, 2021 11:35:59</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 5, 2021 13:23:08</span>
       
     
   </small>
